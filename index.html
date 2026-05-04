@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clement Marie — CV</title>
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --text: #1a1a1a;
+      --muted: #555;
+      --border: #c0cdd8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Georgia", serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #f4f6f8;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Header */
+    header { text-align: center; margin-bottom: 1.2rem; }
+    header h1 { font-size: 2rem; letter-spacing: 0.04em; }
+    .contact {
+      margin-top: 0.4rem;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .contact a { color: var(--navy); text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+    .contact span { margin: 0 0.4rem; color: #aaa; }
+    .tagline {
+      margin-top: 0.5rem;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Sections */
+    section { margin-top: 1.2rem; }
+    h2 {
+      font-size: 1rem;
+      font-variant: small-caps;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      border-bottom: 1.5px solid var(--navy);
+      padding-bottom: 2px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Entry rows */
+    .entry { margin-bottom: 0.85rem; }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+    }
+    .entry-header .left { font-weight: bold; }
+    .entry-header .right {
+      font-style: italic;
+      font-size: 12.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .entry-sub {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+    .entry-sub .role { font-style: italic; color: var(--muted); }
+    .entry-sub .location { font-style: italic; color: var(--muted); font-size: 12.5px; }
+    .coursework {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    ul {
+      margin-top: 0.35rem;
+      padding-left: 1.4rem;
+    }
+    ul li {
+      margin-bottom: 0.25rem;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* Skills */
+    .skills p {
+      font-size: 13px;
+      margin-bottom: 0.25rem;
+      line-height: 1.6;
+    }
+    .skills strong { color: var(--text); }
+
+    /* PDF link */
+    .pdf-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 12.5px;
+    }
+    .pdf-link a {
+      color: var(--navy);
+      text-decoration: none;
+      border: 1px solid var(--navy);
+      padding: 4px 12px;
+      border-radius: 3px;
+    }
+    .pdf-link a:hover { background: var(--navy); color: #fff; }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; padding: 1rem 1.5rem; }
+      .pdf-link { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .page { padding: 1.5rem 1.2rem; }
+      .entry-header, .entry-sub { flex-direction: column; }
+      .entry-header .right, .entry-sub .location { margin-top: 1px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Clement Marie</h1>
+    <div class="contact">
+      <a href="mailto:marieclement172@gmail.com">marieclement172@gmail.com</a>
+      <span>|</span>
+      Paris, France
+      <span>|</span>
+      <a href="https://www.linkedin.com/in/clement-marie/" target="_blank">LinkedIn</a>
+      <span>|</span>
+      <a href="https://github.com/clmrie" target="_blank">GitHub</a>
+      <span>|</span>
+      +33 6 17 54 67 24
+    </div>
+    <p class="tagline">Heavy background in maths and computer science &mdash; Seeking Research Engineer positions from October 2026</p>
+  </header>
+
+  <!-- Education -->
+  <section>
+    <h2>Education</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="left">École Normale Supérieure Paris-Saclay <em style="font-weight:normal;font-size:12.5px">(Shanghai Ranking #12)</em></span>
+        <span class="right">Sept 2025 – Aug 2026</span>
+      </div>
+      <div class="entry-sub">
+        <span class="role">Master M2 – Mathematics, Vision, Learning (MVA)</span>
+        <span class="location">Paris, France</span>
+      </div>
+      <p class="coursework">Relevant coursework: Reinforcement Learning; Probabilistic Graphical Models &amp; Deep Generative Models; Geometric Data Analysis; Optimal Transport; Bayesian Machine Learning; Graphs in Machine Learning</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="left">Université Paris-Saclay <em style="font-weight:normal;font-size:12.5px">(Shanghai Ranking #12)</em></span>
+        <span class="right">2024 – 2025</span>
+      </div>
+      <div class="entry-sub">
+        <span class="role">Master M1 – Artificial Intelligence &nbsp; <em>Grade: 15.3/20</em></span>
+        <span class="location">Paris, France</span>
+      </div>
+      <p class="coursework">Relevant coursework: Applied Statistics; High Performance Computing; Optimization; Machine Learning Algorithms; Hands-on NLP</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="left">Sorbonne Université <em style="font-weight:normal;font-size:12.5px">(Shanghai Ranking #41)</em></span>
+        <span class="right">2021 – 2024</span>
+      </div>
+      <div class="entry-sub">
+        <span class="role">BSc. Double Major in Mathematics and Computer Science &nbsp; <em>Grade: 15.5/20</em></span>
+        <span class="location">Paris, France</span>
+      </div>
+      <p class="coursework">Relevant coursework: Topology; Differential Calculus; Measure Theory; Probability Theory; Linear Algebra; Algorithmics; Data Structures</p>
+    </div>
+  </section>
+
+  <!-- Research Experience -->
+  <section>
+    <h2>Research Experience</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="left">CEA LIST <em style="font-weight:normal">(in partnership with Valeo)</em> – Lab of Vision and Learning for Scene Analysis (LVA)</span>
+        <span class="right">Saclay, France</span>
+      </div>
+      <div class="entry-sub">
+        <span class="role">Research Engineer Intern, supervised by PhD</span>
+        <span class="location">Apr – Oct 2026 (ongoing)</span>
+      </div>
+      <ul>
+        <li>Implementing cutting-edge research methods into efficient, production-ready solutions for 3D scene understanding and autonomous driving, with focus on sensor fusion (camera-radar).</li>
+        <li>Developing scalable systems for experiments and benchmarking on real-world autonomous driving datasets (3D detection, 3D semantic segmentation).</li>
+        <li>Designing physics-informed deep learning architectures for multi-sensor fusion, combining semantic cues from cameras with range and velocity measurements from radars.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="left">Huawei Research Center</span>
+        <span class="right">Munich, Germany</span>
+      </div>
+      <div class="entry-sub">
+        <span class="role">Research Engineer Intern, supervised by PhD</span>
+        <span class="location">May – Aug 2025</span>
+      </div>
+      <ul>
+        <li>Extended Meta AI's OrienterNet with novel design choices for image-to-map localization.</li>
+        <li>Designed multimodal architectures combining images and vector maps using Fourier encodings and Graph Neural Networks (GNNs).</li>
+        <li>Focused on architectural innovation to tackle spatial reasoning and multimodal fusion beyond localization.</li>
+        <li>Deployed reproducible training and inference environments using Docker for scalable experimentation.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="left">Sorbonne Center of Artificial Intelligence (SCAI)</span>
+        <span class="right">Paris, France</span>
+      </div>
+      <div class="entry-sub">
+        <span class="role">Research and Developer Intern</span>
+        <span class="location">May – Jul 2024</span>
+      </div>
+      <ul>
+        <li>Built transformer-based tool for large-scale text comparison with efficient complexity.</li>
+        <li>Deployed interactive web demo using JavaScript and Python.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section>
+    <h2>Awards</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="left">Huawei TechArena – 2nd Prize</span>
+        <span class="right">Munich, Germany, 2025</span>
+      </div>
+      <div class="entry-sub">
+        <span class="role">HRTF Spatial Audio – $3k award</span>
+      </div>
+      <ul>
+        <li>Presented project at award ceremony before judges.</li>
+        <li>Trained models on joint image and HRTF spatial audio data.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <p><strong>Programming:</strong> Python (Fluent – PyTorch, MMCV)</p>
+      <p><strong>ML/AI:</strong> PyTorch, TensorFlow, Keras, scikit-learn, NumPy, pandas, SciPy, FastAPI</p>
+      <p><strong>Languages:</strong> French (Native), English (Fluent)</p>
+    </div>
+  </section>
+
+  <div class="pdf-link">
+    <a href="main.pdf" download>Download PDF</a>
+  </div>
+
+</div>
+</body>
+</html>
