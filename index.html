@@ -1,280 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clement Marie — CV</title>
-  <meta name="description" content="Clement Marie — MSc student (MVA, ENS Paris-Saclay) in mathematics and deep learning. Curriculum vitae." />
-  <style>
-    :root {
-      --navy: #1a3a5c;
-      --navy-light: #2a5298;
-      --accent: #3b82c4;
-      --text: #1a1a1a;
-      --muted: #555;
-      --border: #c0cdd8;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clement Marie — CV</title>
+<meta name="description" content="Clement Marie — MSc student (MVA, ENS Paris-Saclay) in mathematics and deep learning. Curriculum vitae." />
+<style>
+  /* Latin Modern — the OpenType successor to Computer Modern, the font the PDF is set in.
+     Self-hosted so the page never depends on a CDN. See fonts/README.md. */
+  @font-face { font-family:'Latin Modern'; src:url('fonts/LM-regular.woff2') format('woff2');
+               font-weight:normal; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Latin Modern'; src:url('fonts/LM-italic.woff2') format('woff2');
+               font-weight:normal; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Latin Modern'; src:url('fonts/LM-bold.woff2') format('woff2');
+               font-weight:bold; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Latin Modern'; src:url('fonts/LM-bold-italic.woff2') format('woff2');
+               font-weight:bold; font-style:italic; font-display:swap; }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    /* NavyBlue as ghostscript renders it from the PDF's cmyk(0.94,0.54,0,0) */
+    --navy: #266bbd;
+    /* screen magnification of the 10pt document; print resets it to 1 */
+    --s: 1.2;
+  }
 
-    body {
-      font-family: "Georgia", serif;
-      font-size: 14px;
-      color: var(--text);
-      background: #e8eef4;
-      padding: 2rem 1rem;
-    }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .page {
-      max-width: 780px;
-      margin: 0 auto;
-      background: #fff;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      border-radius: 4px;
-      overflow: hidden;
-    }
+  body {
+    background: #d9dde2;
+    padding: 2rem 1rem 3rem;
+    font-family: 'Latin Modern', 'Latin Modern Roman', 'CMU Serif', 'Computer Modern', Georgia, serif;
+  }
 
-    /* Header */
-    header {
-      text-align: center;
-      background: var(--navy);
-      color: #fff;
-      padding: 2rem 3rem 1.5rem;
-    }
-    header h1 {
-      font-size: 2.2rem;
-      letter-spacing: 0.06em;
-      color: #fff;
-      font-weight: bold;
-    }
-    .contact {
-      margin-top: 0.5rem;
-      font-size: 13px;
-      color: #c8d8e8;
-    }
-    .contact a { color: #7ec8f0; text-decoration: none; }
-    .contact a:hover { color: #fff; text-decoration: underline; }
-    .contact span { margin: 0 0.4rem; color: rgba(255,255,255,0.3); }
-    .tagline {
-      margin-top: 0.6rem;
-      font-style: italic;
-      font-size: 13px;
-      color: #a8c4d8;
-    }
+  /* ---- the sheet: a4paper, margin=0.3in ------------------------------------
+     Every dimension is expressed in em of the 10pt body size, so the whole
+     document scales by --s without drifting from the LaTeX proportions.
+     210mm = 595.28pt = 59.528em   297mm = 841.89pt = 84.189em   0.3in = 2.16em */
+  .sheet {
+    width: 59.528em;
+    min-height: 84.189em;
+    padding: 2.16em;
+    margin: 0 auto;
+    background: #fff;
+    color: #000;
+    font-size: calc(10pt * var(--s));
+    line-height: 1.2;                    /* \baselineskip = 12pt at 10pt */
+    box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+    text-rendering: optimizeLegibility;
+  }
 
-    .body-content { padding: 1.8rem 3rem 2rem; }
+  a { color: var(--navy); text-decoration: none; }   /* hypersetup urlcolor=NavyBlue */
+  a:hover { text-decoration: underline; }
+  .quad { display: inline-block; width: 1em; }       /* \quad */
 
-    /* Sections */
-    section { margin-top: 1.2rem; }
-    h2 {
-      font-size: 0.95rem;
-      font-variant: small-caps;
-      letter-spacing: 0.1em;
-      color: var(--navy-light);
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 3px;
-      margin-bottom: 0.8rem;
-    }
+  /* ---- title block --------------------------------------------------------- */
+  .titleblock { text-align: center; }
+  .name {                                            /* {\huge\bfseries ...} — 20.74pt at 10pt base */
+    font-size: 2.074em;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .contact { margin-bottom: 0.6rem; }
+  .sep { padding: 0; }
+  .tagline { font-style: italic; }
 
-    /* Entry rows */
-    .entry { margin-bottom: 0.85rem; }
-    .entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.2rem;
-    }
-    .entry-header .left { font-weight: bold; }
-    .entry-header .right {
-      font-style: italic;
-      font-size: 12.5px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .entry-sub {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      font-size: 13px;
-    }
-    .entry-sub .role { font-style: italic; color: var(--muted); }
-    .entry-sub .location { font-style: italic; color: var(--muted); font-size: 12.5px; }
-    .grade { font-style: italic; color: var(--navy-light); white-space: nowrap; }
+  /* ---- \section: \color{NavyBlue}\bfseries\Large + \titlerule -------------- */
+  h2 {
+    color: var(--navy);
+    font-weight: bold;
+    font-size: 1.44em;                               /* \Large = 14.4pt at 10pt base */
+    line-height: 1.15;
+    margin-top: 0.5em;                               /* titlespacing before  5pt */
+    padding-bottom: 0.06em;
+    border-bottom: 0.5pt solid var(--navy);          /* \titlerule */
+  }
+  section > h2 + * { margin-top: 0.3em; }            /* titlespacing after   3pt */
 
-    /* Course tables */
-    .courses {
-      display: grid;
-      grid-template-columns: 1fr max-content max-content max-content;
-      column-gap: 1.4rem;
-      row-gap: 2px;
-      margin-top: 4px;
-      margin-left: 1rem;
-      font-size: 12.5px;
-      color: var(--muted);
-    }
-    .courses .score,
-    .courses .gpa,
-    .courses .rank { text-align: right; white-space: nowrap; }
-    .courses .rank { color: var(--accent); }
-    .courses .more { color: var(--muted); }
+  /* ---- tabularx{X r}: content left, date/location flush right -------------- */
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 1em; }
+  .row .r { white-space: nowrap; text-align: right; }
 
-    ul {
-      margin-top: 0.35rem;
-      padding-left: 1.4rem;
-    }
-    ul li {
-      margin-bottom: 0.25rem;
-      font-size: 13px;
-      line-height: 1.5;
-    }
+  /* ---- per-block course tables (each sized independently, as in LaTeX) ----- */
+  .courses {
+    font-size: 0.9em;                                /* {\small ...} */
+    margin: 0.2em 0 0 1.111em;                       /* \vspace{2pt}, \hspace{1em} */
+    border-collapse: collapse;
+  }
+  .courses td { padding: 0; vertical-align: baseline; }
+  .courses td + td       { padding-left: 2em;   text-align: right; }  /* @{\hspace{2em}}r */
+  .courses td + td + td  { padding-left: 1.5em; text-align: left;  }  /* @{\hspace{1.5em}}l */
+  .courses td + td + td + td { padding-left: 1.5em; }
 
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem 2rem;
-    }
-    .skills-grid h3 {
-      font-size: 13px;
-      font-weight: bold;
-      color: var(--text);
-      margin-bottom: 0.35rem;
-    }
-    .skills-grid p {
-      font-size: 12.5px;
-      margin-bottom: 0.35rem;
-      line-height: 1.5;
-    }
-    .skills-grid .cat { color: var(--navy-light); font-weight: bold; }
+  .edu + .edu { margin-top: 0.4em; }                 /* \vspace{4pt} */
+  .job + .job { margin-top: 0.4em; }
 
-    /* PDF link */
-    .pdf-link {
-      text-align: center;
-      margin-top: 1.8rem;
-      font-size: 12.5px;
-    }
-    .pdf-link a {
-      color: #fff;
-      text-decoration: none;
-      background: var(--navy-light);
-      padding: 6px 18px;
-      border-radius: 3px;
-      font-family: sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.03em;
-    }
-    .pdf-link a:hover { background: var(--navy); }
+  /* ---- itemize[noitemsep, topsep=2pt, left=1em] ---------------------------- */
+  ul { list-style: none; margin-top: 0.2em; padding-left: 1.07em; }
+  li { padding-left: 1.08em; text-indent: -1.08em; text-align: justify; hyphens: auto; }
+  li::before {                                       /* \textbullet from cmsy10, \labelsep 0.5em */
+    content: "\2022"; display: inline-block; text-indent: 0;
+    font-size: 1.3em; width: 0.83em;                 /* 0.83 x 1.3 = 1.08em of body size */
+    line-height: 0.923;                              /* 1.2/1.3: keep the line box at \baselineskip */
+  }
 
-    @media print {
-      body { background: #fff; padding: 0; }
-      header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .page { box-shadow: none; }
-      .body-content { padding: 1rem 1.5rem; }
-      .pdf-link { display: none; }
-    }
+  /* ---- Skills: tabularx{X @{\hspace{2em}} X} ------------------------------- */
+  .skills { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2em; }
+  .skills .hdr { font-weight: bold; margin-bottom: 0.45em; }   /* header row + \\[2pt] */
+  .skills p { text-align: justify; hyphens: auto; }
+  .skills p + p { margin-top: 0.2em; }
+  .cat { color: var(--navy); font-weight: bold; }
 
-    @media (max-width: 600px) {
-      header { padding: 1.5rem 1.2rem 1rem; }
-      .body-content { padding: 1.2rem 1.2rem; }
-      .entry-header, .entry-sub { flex-direction: column; }
-      .entry-header .right, .entry-sub .location { margin-top: 1px; }
-      .courses { grid-template-columns: 1fr max-content; margin-left: 0.5rem; }
-      .courses .gpa, .courses .rank { display: none; }
-      .skills-grid { grid-template-columns: 1fr; }
+  /* ---- off-document controls ----------------------------------------------- */
+  .actions { text-align: center; margin-top: 1.25rem; font-size: 13px; }
+  .actions a {
+    display: inline-block; padding: 6px 16px; border-radius: 3px;
+    background: var(--navy); color: #fff;
+    font-family: system-ui, sans-serif; font-size: 12px; letter-spacing: 0.02em;
+  }
+  .actions a:hover { background: #1b5296; text-decoration: none; }
+
+  /* ---- print: reset to the exact document ---------------------------------- */
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sheet { --s: 1; box-shadow: none; margin: 0; }
+    .actions { display: none; }
+  }
+
+  /* ---- narrower screens: step the sheet down, then reflow ------------------ */
+  @media (max-width: 1010px) { :root { --s: 1.0; } }
+  @media (max-width: 840px)  { :root { --s: 0.88; } }
+  @media (max-width: 700px) {
+    body { padding: 0; }
+    .sheet {
+      --s: 1;
+      width: 100%; max-width: 100%; min-height: 0;
+      padding: 1.25rem 1rem 1.75rem;
+      font-size: 15px; line-height: 1.35;
+      box-shadow: none;
     }
-  </style>
+    .name { font-size: 1.9em; }
+    h2 { font-size: 1.35em; }
+    .row { flex-direction: column; gap: 0; }
+    .row .r { text-align: left; font-size: 0.92em; }
+    .courses, .courses tbody, .courses tr, .courses td { display: block; }
+    .courses { margin-left: 0.5em; font-size: 0.88em; }
+    .courses tr { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.6em; }
+    .courses td:first-child { flex: 1 1 55%; }
+    .courses td + td, .courses td + td + td, .courses td + td + td + td {
+      padding-left: 0; text-align: left; white-space: nowrap;
+    }
+    .skills { grid-template-columns: 1fr; row-gap: 0.6em; }
+    li, .skills p { text-align: left; }
+    .actions { margin: 1rem 0 2rem; }
+  }
+</style>
 </head>
 <body>
-<div class="page">
 
-  <header>
-    <h1>Clement Marie</h1>
+<div class="sheet">
+
+  <!-- ============================ title block ============================ -->
+  <div class="titleblock">
+    <div class="name">Clement Marie</div>
     <div class="contact">
-      <a href="mailto:marieclement172@gmail.com">marieclement172@gmail.com</a>
-      <span>|</span>
-      Paris, France
-      <span>|</span>
-      <a href="https://www.linkedin.com/in/clement-marie/" target="_blank">LinkedIn</a>
-      <span>|</span>
-      <a href="https://github.com/clmrie" target="_blank">GitHub</a>
-      <span>|</span>
-      +33 6 17 54 67 24
+      <a href="mailto:marieclement172@gmail.com">marieclement172@gmail.com</a> <span class="sep">|</span>
+      Paris, France <span class="sep">|</span>
+      <a href="https://www.linkedin.com/in/clement-marie/">LinkedIn</a> <span class="sep">|</span>
+      <a href="https://github.com/clmrie">GitHub</a> <span class="sep">|</span> +33 6 17 54 67 24
     </div>
-    <p class="tagline">MSc student (MVA, ENS Paris-Saclay) in mathematics &amp; deep learning, applying in Fall 2026 for PhD entry in 2027</p>
-  </header>
+    <div class="tagline">MSc student (MVA, ENS Paris-Saclay) in mathematics &amp; deep learning, applying in Fall 2026 for PhD entry in 2027</div>
+  </div>
 
-  <div class="body-content">
-
-  <!-- Education -->
+  <!-- ============================== Education =========================== -->
   <section>
     <h2>Education</h2>
 
-    <div class="entry">
-      <div class="entry-header">
-        <span class="left">École Normale Supérieure Paris-Saclay <em style="font-weight:normal;font-size:12.5px">(ARWU World #13)</em></span>
-        <span class="right">Sept 2025 – Aug 2026</span>
+    <div class="edu">
+      <div class="row">
+        <span class="l"><b>École Normale Supérieure Paris-Saclay</b> <i>(ARWU World #13)</i></span>
+        <span class="r"><i>Sept 2025 – Aug 2026</i></span>
       </div>
-      <div class="entry-sub">
-        <span class="role">Master M2 – Mathematics, Vision, Learning (MVA) &nbsp; <span class="grade">Grade: 83.2/100 &nbsp; GPA 4.0</span></span>
-        <span class="location">Paris, France</span>
+      <div class="row">
+        <span class="l">Master M2 – Mathematics, Vision, Learning (MVA)<span class="quad"></span><i>Grade: 83.2/100<span class="quad"></span>GPA 4.0</i></span>
+        <span class="r">Paris, France</span>
       </div>
-      <div class="courses">
-        <span>Large Language Models for Code &amp; Proof</span><span class="score">98.5/100</span><span class="gpa">GPA 4.0</span><span class="rank"></span>
-        <span>Geometry Processing &amp; Geometric Deep Learning</span><span class="score">89.5/100</span><span class="gpa">GPA 4.0</span><span class="rank"></span>
-        <span>Detection Theory</span><span class="score">85/100</span><span class="gpa">GPA 4.0</span><span class="rank"></span>
-        <span>Probabilistic Graphical Models &amp; Deep Generative Models</span><span class="score">82.5/100</span><span class="gpa">GPA 4.0</span><span class="rank more">…</span>
-      </div>
+      <table class="courses">
+        <tr><td>Large Language Models for Code &amp; Proof</td><td>98.5/100</td><td>GPA 4.0</td></tr>
+        <tr><td>Geometry Processing &amp; Geometric Deep Learning</td><td>89.5/100</td><td>GPA 4.0</td></tr>
+        <tr><td>Detection Theory</td><td>85/100</td><td>GPA 4.0</td></tr>
+        <tr><td>Probabilistic Graphical Models &amp; Deep Generative Models</td><td>82.5/100</td><td>GPA 4.0<span class="quad"></span>…</td></tr>
+      </table>
     </div>
 
-    <div class="entry">
-      <div class="entry-header">
-        <span class="left">Université Paris-Saclay <em style="font-weight:normal;font-size:12.5px">(ARWU World #13)</em></span>
-        <span class="right">2024 – 2025</span>
+    <div class="edu">
+      <div class="row">
+        <span class="l"><b>Université Paris-Saclay</b> <i>(ARWU World #13)</i></span>
+        <span class="r"><i>2024 – 2025</i></span>
       </div>
-      <div class="entry-sub">
-        <span class="role">Master M1 – Artificial Intelligence &nbsp; <span class="grade">Grade: 75.1/100 &nbsp; GPA 3.7</span></span>
-        <span class="location">Paris, France</span>
+      <div class="row">
+        <span class="l">Master M1 – Artificial Intelligence<span class="quad"></span><i>Grade: 75.1/100<span class="quad"></span>GPA 3.7</i></span>
+        <span class="r">Paris, France</span>
       </div>
-      <div class="courses">
-        <span>Mathematics for Data Science</span><span class="score">87.5/100</span><span class="gpa">GPA 4.0</span><span class="rank"></span>
-        <span>Hands-on NLP</span><span class="score">86/100</span><span class="gpa">GPA 4.0</span><span class="rank"></span>
-        <span>Research Project</span><span class="score">80/100</span><span class="gpa">GPA 4.0</span><span class="rank"></span>
-        <span>Deep Learning</span><span class="score">77/100</span><span class="gpa">GPA 3.7</span><span class="rank more">…</span>
-      </div>
+      <table class="courses">
+        <tr><td>Mathematics for Data Science</td><td>87.5/100</td><td>GPA 4.0</td></tr>
+        <tr><td>Hands-on NLP</td><td>86/100</td><td>GPA 4.0</td></tr>
+        <tr><td>Research Project</td><td>80/100</td><td>GPA 4.0</td></tr>
+        <tr><td>Deep Learning</td><td>77/100</td><td>GPA 3.7<span class="quad"></span>…</td></tr>
+      </table>
     </div>
 
-    <div class="entry">
-      <div class="entry-header">
-        <span class="left">Sorbonne Université <em style="font-weight:normal;font-size:12.5px">(ARWU World #43)</em></span>
-        <span class="right">2021 – 2024</span>
+    <div class="edu">
+      <div class="row">
+        <span class="l"><b>Sorbonne Université</b> <i>(ARWU World #43)</i></span>
+        <span class="r"><i>2021 – 2024</i></span>
       </div>
-      <div class="entry-sub">
-        <span class="role">BSc. Double Major in Mathematics and Computer Science &nbsp; <span class="grade">Grade: 77.5/100</span></span>
-        <span class="location">Paris, France</span>
+      <div class="row">
+        <span class="l">BSc. Double Major in Mathematics and Computer Science<span class="quad"></span><i>Grade: 77.5/100</i></span>
+        <span class="r">Paris, France</span>
       </div>
-      <div class="courses">
-        <span>Lebesgue Integral on &#8477;<sup>n</sup></span><span class="score">98/100</span><span class="gpa">GPA 4.0</span><span class="rank">top 1.4%</span>
-        <span>Data Sciences</span><span class="score">95.5/100</span><span class="gpa">GPA 4.0</span><span class="rank">top 3%</span>
-        <span>Algorithms I</span><span class="score">83/100</span><span class="gpa">GPA 4.0</span><span class="rank">top 7%</span>
-        <span>Probabilities I</span><span class="score">75.5/100</span><span class="gpa">GPA 3.7</span><span class="rank">top 11% …</span>
-      </div>
+      <table class="courses">
+        <tr><td>Lebesgue Integral on &#8477;<sup>n</sup></td><td>98/100</td><td>GPA 4.0</td><td>top 1.4%</td></tr>
+        <tr><td>Data Sciences</td><td>95.5/100</td><td>GPA 4.0</td><td>top 3%</td></tr>
+        <tr><td>Algorithms I</td><td>83/100</td><td>GPA 4.0</td><td>top 7%</td></tr>
+        <tr><td>Probabilities I</td><td>75.5/100</td><td>GPA 3.7</td><td>top 11%<span class="quad"></span>…</td></tr>
+      </table>
     </div>
   </section>
 
-  <!-- Research Experience -->
+  <!-- ========================= Research Experience ====================== -->
   <section>
     <h2>Research Experience</h2>
 
-    <div class="entry">
-      <div class="entry-header">
-        <span class="left">CEA List – Laboratory of Vision and Learning for Scene Analysis (LVA)</span>
-        <span class="right">Saclay, France</span>
+    <div class="job">
+      <div class="row">
+        <span class="l"><b>CEA List – Laboratory of Vision and Learning for Scene Analysis (LVA)</b></span>
+        <span class="r">Saclay, France</span>
       </div>
-      <div class="entry-sub">
-        <span class="role">Research Engineer Intern, supervised by PhD Researcher</span>
-        <span class="location">Apr – Oct 2026 (ongoing)</span>
+      <div class="row">
+        <span class="l"><i>Research Engineer Intern, supervised by PhD Researcher</i></span>
+        <span class="r">Apr–Oct 2026 <i>(ongoing)</i></span>
       </div>
       <ul>
         <li>Designing multimodal architectures that fuse camera semantics with radar range/velocity into a persistent, geometry-grounded 3D latent representation, decoupled from sensor modality and viewpoint, for scene understanding in autonomous vehicles.</li>
@@ -282,29 +248,29 @@
       </ul>
     </div>
 
-    <div class="entry">
-      <div class="entry-header">
-        <span class="left">Huawei Research Center</span>
-        <span class="right">Munich, Germany</span>
+    <div class="job">
+      <div class="row">
+        <span class="l"><b>Huawei Research Center</b></span>
+        <span class="r">Munich, Germany</span>
       </div>
-      <div class="entry-sub">
-        <span class="role">Research Engineer Intern, supervised by PhD Researcher</span>
-        <span class="location">May – Aug 2025</span>
+      <div class="row">
+        <span class="l"><i>Research Engineer Intern, supervised by PhD Researcher</i></span>
+        <span class="r">May–Aug 2025</span>
       </div>
       <ul>
-        <li>Extended Meta AI's OrienterNet for viewpoint-invariant image-to-map localization, designing multimodal architectures (Fourier encodings, Graph Neural Networks) that ground perception in geometry rather than raw pixels; raised recall@1m position / yaw accuracy by <strong>+4%</strong> over SOTA OrienterNet.</li>
+        <li>Extended Meta AI’s OrienterNet for viewpoint-invariant image-to-map localization, designing multimodal architectures (Fourier encodings, Graph Neural Networks) that ground perception in geometry rather than raw pixels; raised recall@1m position / yaw accuracy by <b>+4%</b> over SOTA OrienterNet.</li>
         <li>Deployed reproducible Docker-based training and inference environments for scalable experimentation.</li>
       </ul>
     </div>
 
-    <div class="entry">
-      <div class="entry-header">
-        <span class="left">Sorbonne Center of Artificial Intelligence (SCAI)</span>
-        <span class="right">Paris, France</span>
+    <div class="job">
+      <div class="row">
+        <span class="l"><b>Sorbonne Center of Artificial Intelligence (SCAI)</b></span>
+        <span class="r">Paris, France</span>
       </div>
-      <div class="entry-sub">
-        <span class="role">Research and Developer Intern</span>
-        <span class="location">May – Jul 2024</span>
+      <div class="row">
+        <span class="l"><i>Research and Developer Intern</i></span>
+        <span class="r">May–Jul 2024</span>
       </div>
       <ul>
         <li>Built transformer-based tool for large-scale text comparison with efficient complexity.</li>
@@ -313,17 +279,17 @@
     </div>
   </section>
 
-  <!-- Awards -->
+  <!-- ================================ Awards ============================ -->
   <section>
     <h2>Awards</h2>
 
-    <div class="entry">
-      <div class="entry-header">
-        <span class="left">Huawei TechArena – 2nd Prize</span>
-        <span class="right">Munich, Germany, 2025</span>
+    <div class="job">
+      <div class="row">
+        <span class="l"><b>Huawei TechArena – 2nd Prize</b></span>
+        <span class="r">Munich, Germany, 2025</span>
       </div>
-      <div class="entry-sub">
-        <span class="role">HRTF Spatial Audio – $3k award</span>
+      <div class="row">
+        <span class="l"><i>HRTF Spatial Audio</i> – $3k award</span>
       </div>
       <ul>
         <li>Presented project at award ceremony before judges.</li>
@@ -332,20 +298,20 @@
     </div>
   </section>
 
-  <!-- Skills -->
+  <!-- ========================= Skills &amp; Knowledge ======================= -->
   <section>
     <h2>Skills &amp; Knowledge</h2>
-    <div class="skills-grid">
+    <div class="skills">
       <div>
-        <h3>Methods &amp; Algorithms</h3>
+        <p class="hdr">Methods &amp; Algorithms</p>
         <p><span class="cat">Detection &amp; Fusion</span> query-based camera–radar fusion (DETR-family, cross-attention, radar-guided queries)</p>
         <p><span class="cat">Scene Representation</span> BEV features, image-to-BEV transformation, radar point clouds</p>
         <p><span class="cat">Localization</span> image-to-map localization, neural BEV matching</p>
         <p><span class="cat">Foundations</span> transformers &amp; attention, diffusion &amp; generative models</p>
       </div>
       <div>
-        <h3>Coding / Software / Hardware</h3>
-        <p><span class="cat">Core</span> <strong>Python</strong> (fluent), <strong>C++</strong> (proficient), <strong>PyTorch</strong> (advanced), MMCV</p>
+        <p class="hdr">Coding / Software / Hardware</p>
+        <p><span class="cat">Core</span> <b>Python</b> (fluent), <b>C++</b> (proficient), <b>PyTorch</b> (advanced), MMCV</p>
         <p><span class="cat">ML Stack</span> TensorFlow, Keras, scikit-learn, NumPy, pandas, SciPy (proficient)</p>
         <p><span class="cat">Infrastructure</span> Docker, Linux, GPU cluster training (proficient)</p>
         <p><span class="cat">Web</span> FastAPI, JavaScript (basic)</p>
@@ -354,11 +320,9 @@
     </div>
   </section>
 
-  <div class="pdf-link">
-    <a href="main.pdf" download>Download PDF</a>
-  </div>
+</div><!-- /sheet -->
 
-  </div><!-- end body-content -->
-</div>
+<div class="actions"><a href="main.pdf">Download PDF</a></div>
+
 </body>
 </html>
